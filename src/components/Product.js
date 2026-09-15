@@ -4,7 +4,7 @@ import products from '../products.json'
 
 const Product = (props) => {
     const { id: routeId } = useParams();
-    const { id: propId, name: propName, description: propDescription, category: propCategory, price: propPrice } = props;
+
     const product = props.id
         ? props
         : products.find(item => item.id === parseInt(routeId));
