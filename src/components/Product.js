@@ -2,19 +2,25 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import products from '../products.json'
 
-const Product = () => {
-    const { alias, id } = useParams();
-    const [product = null] = products.filter(prod => prod.id === parseInt(id))
+const Product = (props) => {
+    const { id: routeId } = useParams();
+    const { id: propId, name: propName, description: propDescription, category: propCategory, price: propPrice } = props;
+    const product = props.id
+        ? props
+        : products.find(item => item.id === parseInt(routeId));
 
-    if (product === null) {
-        return "Nie ma takiego produktu"
+    if (!product) {
+        return "Nie ma takiego produktu";
     }
 
-    const { name, description } = product;
+    const { id, name, description, category, price } = product;
     return (
-        <article data-id={id} data-alias={alias}>
+        <article data-id={id} >
             <h1>{name}</h1>
+            <p>{id}</p>
             <p>{description}</p>
+            <p>{category}</p>
+            <p>{price}</p>
         </article>
     )
 }
