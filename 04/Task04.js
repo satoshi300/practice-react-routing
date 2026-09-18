@@ -13,9 +13,9 @@ const Task04 = () => {
     const history = useHistory();
 
     const handleChange = (e) => {
-         history.push('/task04/' + e.target.value)
-
+        history.push('/task04/' + e.target.value)
     }
+    
     return (
         <Router basename='/task04'>
             <section>
